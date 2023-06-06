@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Destino</title>
+  <script src="script.js"></script>
+</head>
+<body>
+  <div id="destino">
+    <h2>Conteúdo Destino</h2>
+    <p>Aqui será colocado o conteúdo transferido.</p>
+  </div>
+  
+  <button id="removerBtn" onclick="removerConteudo()">Remover</button>
+  
+  <script>
+    window.onload = function() {
+      // Obter o conteúdo armazenado em localStorage
+      var conteudoTransferido = localStorage.getItem('conteudoTransferido');
+      
+      // Verificar se há conteúdo transferido
+      if (conteudoTransferido) {
+        // Colocar o conteúdo transferido na div de destino
+        var destinoDiv = document.getElementById('destino');
+        destinoDiv.innerHTML = conteudoTransferido;
+        
+        // Exibir o botão "Remover"
+        var removerBtn = document.getElementById('removerBtn');
+        removerBtn.style.display = 'block';
+      }
+    }
+    
+    function removerConteudo() {
+      // Remover o conteúdo da div de destino
+      var destinoDiv = document.getElementById('destino');
+      destinoDiv.innerHTML = "";
+      
+      // Remover o conteúdo de localStorage
+      localStorage.removeItem('conteudoTransferido');
+      
+      // Ocultar o botão "Remover"
+      var removerBtn = document.getElementById('removerBtn');
+      removerBtn.style.display = 'none';
+    }
+  </script>
+</body>
+</html>
